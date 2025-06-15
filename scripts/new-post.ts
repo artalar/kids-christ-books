@@ -1,6 +1,6 @@
 /**
  * Create a new post with frontmatter
- * Usage: pnpm new-post <title>
+ * Usage: npm new-post <title>
  */
 
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'

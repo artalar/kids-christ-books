@@ -1,6 +1,6 @@
 /**
  * Apply LQIP (Low-Quality Image Placeholders) styles to HTML images from LQIP mapping
- * Usage: pnpm apply-lqip
+ * Usage: npm apply-lqip
  */
 
 import fs from 'node:fs/promises'

@@ -1,7 +1,7 @@
 /**
  * Format posts by fixing spaces and punctuations between CJK
  * Project: https://github.com/huacnlee/autocorrect
- * Usage: pnpm format-posts
+ * Usage: npm format-posts
  */
 
 import { readFile, writeFile } from 'node:fs/promises'

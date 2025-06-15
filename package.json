@@ -2,11 +2,10 @@
   "name": "astro-theme-retypeset",
   "type": "module",
   "version": "1.0.0",
-  "packageManager": "pnpm@10.12.1",
   "repository": "https://github.com/radishzzz/astro-theme-retypeset",
   "scripts": {
     "dev": "astro check && astro dev",
-    "build": "astro check && astro build && pnpm generate-lqip && pnpm apply-lqip",
+    "build": "astro check && astro build && npm generate-lqip && npm apply-lqip",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",

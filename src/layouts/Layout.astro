@@ -25,22 +25,26 @@ interface Props {
   supportedLangs?: string[]
 }
 
-const { postTitle, postDescription, postSlug, supportedLangs = [] } = Astro.props
+const {
+  postTitle,
+  postDescription,
+  postSlug,
+  supportedLangs = [],
+} = Astro.props
 const { isPost } = getPageInfo(Astro.url.pathname)
-const fontStyle = themeConfig.global.fontStyle === 'serif' ? 'font-serif' : 'font-sans'
+const fontStyle
+  = themeConfig.global.fontStyle === 'serif' ? 'font-serif' : 'font-sans'
 const animationEnabled = !themeConfig.global.reduceMotion
-const MarginBottom = isPost && themeConfig.comment?.enabled
-  ? 'mb-10' // Post page with comments
-  : 'mb-12' // Other pages without comments
+const MarginBottom
+  = isPost && themeConfig.comment?.enabled
+    ? 'mb-10' // Post page with comments
+    : 'mb-12' // Other pages without comments
+
+// const lang = Astro.currentLocale
+const lang = 'ru';
 ---
 
-<html
-  lang={Astro.currentLocale}
-  class:list={[
-    fontStyle,
-    { 'scroll-smooth': isPost },
-  ]}
->
+<html lang={lang} class:list={[fontStyle, { 'scroll-smooth': isPost }]}>
   <Head {postTitle} {postDescription} {postSlug} />
   <body>
     <div

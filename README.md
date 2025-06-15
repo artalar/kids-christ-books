@@ -49,14 +49,14 @@ Retypeset is a static blog theme based on the [Astro](https://astro.build/) fram
    # Navigate to the project directory
    cd <repository-name>
 
-   # Install pnpm globally (if not already installed)
-   npm install -g pnpm
+   # Install npm globally (if not already installed)
+   npm install -g npm
 
    # Install dependencies
-   pnpm install
+   npm install
 
    # Start the development server
-   pnpm dev
+   npm dev
    ```
 
 3. Refer to the [Theme Guide](https://retypeset.radishzz.cc/en/posts/theme-guide/) to customize your blog and create new articles.
@@ -66,7 +66,7 @@ Retypeset is a static blog theme based on the [Astro](https://astro.build/) fram
 
 ## Updates
 
-Retypeset releases [new features](https://github.com/radishzzz/astro-theme-retypeset/issues/18) from time to time. Simply run `pnpm update-theme` to update the theme. If you encounter merge conflicts, please refer to [this video](https://youtu.be/lz5OuKzvadQ?si=sH_ALNgqxrYqNVQT) for manual resolution.
+Retypeset releases [new features](https://github.com/radishzzz/astro-theme-retypeset/issues/18) from time to time. Simply run `npm update-theme` to update the theme. If you encounter merge conflicts, please refer to [this video](https://youtu.be/lz5OuKzvadQ?si=sH_ALNgqxrYqNVQT) for manual resolution.
 
 ## Credits
 

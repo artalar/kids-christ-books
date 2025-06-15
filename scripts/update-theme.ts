@@ -1,6 +1,6 @@
 /**
  * Update theme from upstream repository
- * Usage: pnpm update-theme
+ * Usage: npm update-theme
  */
 
 import { execSync } from 'node:child_process'

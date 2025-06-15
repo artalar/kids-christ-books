@@ -1,6 +1,6 @@
 /**
  * Generate LQIP (Low-Quality Image Placeholders) mapping to src/assets/lqip-map.json
- * Usage: pnpm generate-lqip
+ * Usage: npm generate-lqip
  */
 
 import type { Buffer } from 'node:buffer'
