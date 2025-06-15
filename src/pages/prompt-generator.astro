@@ -1,0 +1,330 @@
+---
+import Layout from '@/layouts/Layout.astro'
+
+const AGES = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const GENRES = [
+  'Приключения',
+  'Сказка',
+  'Притча',
+  'Современная история',
+  'Фантастика',
+  'Библейский сюжет',
+  'Семейная драма',
+  'Юмор',
+  'Детектив',
+  'Притча о дружбе',
+]
+const HEROES = [
+  'Мальчик',
+  'Девочка',
+  'Животное',
+  'Ангел',
+  'Семья',
+  'Группа друзей',
+  'Вымышленный персонаж',
+  'Святой',
+  'Обычный ребёнок',
+]
+const PLACES = [
+  'Дом',
+  'Квартира',
+  'Дача',
+  'Школа',
+  'Детский сад',
+  'Церковь',
+  'Библиотека',
+  'Магазин игрушек',
+  'Зоопарк',
+  'Парк аттракционов',
+  'Лес',
+  'Поляна',
+  'Гора',
+  'Пляж',
+  'Море',
+  'Остров',
+  'Подводный мир',
+  'Космос',
+  'Деревня',
+  'Город',
+  'Замок',
+  'Пиратский корабль',
+  'Сказочный лес',
+  'Волшебная страна',
+  'Подземелье',
+  'Лабиринт',
+  'Старинный особняк',
+  'Музей',
+  'Поезд',
+  'Самолёт',
+  'Сказочный город',
+  'Планета динозавров',
+  'Игровая площадка',
+  'Снежная страна',
+  'Пустыня',
+  'Двор',
+  'Секретная база',
+  'Волшебная школа',
+  'Луна',
+  'Сад',
+]
+const MORALS = [
+  'Прощение',
+  'Дружба',
+  'Честность',
+  'Вера',
+  'Любовь',
+  'Смирение',
+  'Благодарность',
+  'Послушание',
+  'Надежда',
+  'Милосердие',
+]
+const TWISTS = [
+  'Герой теряет что-то важное',
+  'Появляется новый друг',
+  'Раскрывается тайна',
+  'Происходит чудо',
+  'Испытание веры',
+  'Спасение',
+  'Герой помогает врагу',
+  'Герой попадает в прошлое/будущее',
+  'Герой спасает кого-то',
+  'Герой оказывается в опасности',
+  'Герой раскрывает секрет взрослого',
+  'Герой спасает праздник',
+  'Герой теряет память',
+  'Герой становится лидером',
+  'Герой совершает ошибку, но исправляет её',
+  'Герой встречает святого',
+  'Герой видит сон, который сбывается',
+  'Герой раскрывает заговор',
+  'Герой встречает Бога во сне',
+  'Герой помогает незнакомцу',
+  'Герой становится причиной чуда',
+  'Герой спасает животное',
+  'Герой помогает другу преодолеть страх',
+]
+const STYLES = [
+  'Как Клайв Льюис',
+  'Как православная притча',
+  'Современный язык',
+  'С юмором',
+  'С элементами загадки',
+]
+const LENGTHS = [300, 500, 700, 1000]
+const PARTS = [1, 2, 3, 4]
+const SYSTEM_PROMPTS = [
+  'История должна быть открыто христианской, с прямыми упоминаниями Бога, молитвы, цитат из Библии.',
+  'История с чётким христианским посылом, но без прямых цитат из Библии.',
+  'История с христианскими ценностями, но без прямых упоминаний религии.',
+  'История с ненавязчивым христианским подтекстом, как у Клайва Льюиса.',
+  'История с универсальными моральными ценностями, которые могут быть истолкованы как христианские.',
+];
+---
+
+<Layout>
+  <div class="mb-8 uno-decorative-line"></div>
+  <h1 class="mb-6 text-5xl font-bold">Генератор промпта для LLM</h1>
+  <form
+    id="prompt-form"
+    class="my-8 max-w-xl flex flex-col gap-7 uno-round-border bg-secondary/5 p-8 shadow-lg md:p-10"
+  >
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="flex flex-col gap-2">
+        <label class="mb-1 text-lg font-semibold">Возраст ребёнка</label>
+        <select
+          name="age"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {AGES.map(age => <option value={age}>{age}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="mb-1 text-lg font-semibold">Жанр/тема</label>
+        <select
+          name="genre"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {GENRES.map(g => <option value={g}>{g}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="mb-1 text-lg font-semibold">Главный герой</label>
+        <select
+          name="hero"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {HEROES.map(h => <option value={h}>{h}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="mb-1 text-lg font-semibold">Место действия</label>
+        <select
+          name="place"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {PLACES.map(p => <option value={p}>{p}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="mb-1 text-lg font-semibold">Мораль/урок</label>
+        <select
+          name="moral"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {MORALS.map(m => <option value={m}>{m}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="mb-1 text-lg font-semibold">Неожиданный поворот</label>
+        <select
+          name="twist"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {TWISTS.map(t => <option value={t}>{t}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="mb-1 text-lg font-semibold">Стиль повествования</label>
+        <select
+          name="style"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {STYLES.map(s => <option value={s}>{s}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="mb-1 text-lg font-semibold">Количество слов</label
+        >
+        <select
+          name="length"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {LENGTHS.map(l => <option value={l}>{l}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="mb-1 text-lg font-semibold">Количество частей</label>
+        <select
+          name="parts"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {PARTS.map(p => <option value={p}>{p}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2 md:col-span-2">
+        <label class="mb-1 text-lg font-semibold">Системный промпт (степень христианского мотива)</label
+        >
+        <select
+          name="system"
+          required
+          class="custom-select border uno-round-border border-secondary/20 bg-background px-4 py-2 pr-10 text-lg transition-all focus:(border-primary outline-none)"
+        >
+          {SYSTEM_PROMPTS.map(s => <option value={s}>{s}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-2 md:col-span-2">
+        <label class="mb-1 text-lg font-semibold">Особые пожелания</label>
+        <textarea
+          name="extra"
+          rows="2"
+          placeholder="Например: добавить загадку, сделать героя девочкой и т.д."
+          class="resize-vertical min-h-16 border uno-round-border border-secondary/20 bg-background px-4 py-2 text-lg transition-all focus:(border-primary outline-none)"
+        ></textarea>
+      </div>
+    </div>
+    <div class="mt-6 flex justify-end gap-4">
+      <button
+        type="reset"
+        class="border border-secondary/20 rounded-lg bg-secondary/10 px-6 py-2 text-base font-semibold transition-all active:scale-95 hover:(border-primary/30 bg-secondary/20 text-primary)"
+      >Сбросить</button
+      >
+    </div>
+  </form>
+  <h2 class="my-8 text-2xl font-semibold">Ваш промпт для LLM:</h2>
+  <div id="prompt-output" class="relative my-8 rounded bg-secondary/5 p-4">
+    <pre id="prompt-code" contenteditable class="whitespace-pre-wrap text-base">
+    </pre>
+    <button
+      id="copy-button"
+      class="absolute right-2 top-2 rounded p-1 opacity-70 transition-opacity hover:opacity-100"
+      title="Copy to clipboard"
+      aria-label="Copy code to clipboard"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M6.9.8v18h14.5V.8zm12.8 16h-11v-14h11z"></path>
+        <path d="M4.3 21.2V5.6l-1.7.5v17.1h14.3l.6-2z"></path>
+      </svg>
+    </button>
+  </div>
+  <script is:inline>
+const form = document.getElementById('prompt-form')
+const code = document.getElementById('prompt-code')
+const copyButton = document.getElementById('copy-button')
+
+function makePrompt(data) {
+  return `Придумай историю в жанре "${data.genre}" для ${data.age}-летнего ребёнка (${data.hero}). Место действия: ${data.place},\nс моралью: ${data.moral}.\nНеожиданный поворот: ${data.twist}.\nСтиль повествования: ${data.style}.\nДлина каждой части: ${data.length} слов.\nКоличество частей: ${data.parts}.\n${data.extra ? `Особые пожелания: ${data.extra}\n` : ''}${data.system}`
+}
+
+function updatePrompt() {
+  const data = Object.fromEntries(new FormData(form).entries())
+  code.textContent = makePrompt(data)
+}
+
+async function copyToClipboard() {
+  try {
+    await navigator.clipboard.writeText(code.textContent)
+    // Show success feedback
+    copyButton.innerHTML = `
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="m23.1 6.4-1.3-1.3L9.4 16.6l-6.3-5.4-1.2 1.2L9.4 20z"/>
+  </svg>
+`
+    copyButton.style.color = '#22c55e'
+
+    // Reset after 1.5 seconds
+    setTimeout(() => {
+      copyButton.innerHTML = `
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M6.9.8v18h14.5V.8zm12.8 16h-11v-14h11z"/>
+      <path d="M4.3 21.2V5.6l-1.7.5v17.1h14.3l.6-2z"/>
+    </svg>
+  `
+      copyButton.style.color = ''
+    }, 1500)
+  }
+  catch (error) {
+    console.error('Failed to copy:', error)
+  }
+}
+
+form.addEventListener('input', updatePrompt)
+form.addEventListener('change', updatePrompt)
+copyButton.addEventListener('click', copyToClipboard)
+
+// Инициализация
+updatePrompt()
+</script>
+</Layout>
+
+<style>
+  .custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="20" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 8l3 3 3-3" stroke="%23666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 1.2em;
+    padding-right: 2.5em;
+  }
+</style>
