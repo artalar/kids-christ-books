@@ -5,7 +5,7 @@
   "repository": "https://github.com/radishzzz/astro-theme-retypeset",
   "scripts": {
     "dev": "astro check && astro dev",
-    "build": "astro check && astro build && npm generate-lqip && npm apply-lqip",
+    "build": "astro check && astro build && npm run generate-lqip && npm run apply-lqip",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
