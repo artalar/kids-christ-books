@@ -18,17 +18,17 @@
     "update-vendors": "curl -L https://unpkg.com/@waline/client@latest/dist/waline.css -o public/vendors/waline/waline.css && curl -L https://unpkg.com/@waline/client@latest/dist/waline.js -o public/vendors/waline/waline.js"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/mdx": "^4.3.6",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/sitemap": "^3.4.1",
     "astro": "^5.9.3",
     "astro-compress": "^2.3.8",
-    "astro-og-canvas": "^0.7.0",
+    "astro-og-canvas": "^0.7.1",
     "astro-robots-txt": "^1.0.0",
     "canvaskit-wasm": "^0.40.0",
     "feed": "^5.1.0",
     "gsap": "^3.13.0",
-    "katex": "^0.16.22",
+    "katex": "^0.16.23",
     "markdown-it": "^14.1.0",
     "mdast-util-to-string": "^4.0.0",
     "node-html-parser": "^7.0.1",
@@ -41,7 +41,7 @@
     "remark-directive": "^4.0.0",
     "remark-math": "^6.0.0",
     "sanitize-html": "^2.17.0",
-    "sharp": "^0.34.2",
+    "sharp": "^0.34.4",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
